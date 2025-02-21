@@ -52,16 +52,16 @@ public class GuessGame {
         int eleccion = -1;
 
         do {
-            for (int i = 0; i < players.length; i++) {
-                System.out.println("Turno del jugador " + (i + 1) + ".");
+            for (int i=0; i<players.length; i++) {
+                System.out.println("Turno del jugador " + (i+1) + ".");
                 eleccion = players[i].guess();
 
                 if (eleccion == numeroAleatorio) {
-                    System.out.println("EL JUGADOR " + (i + 1) + " HA GANADO!");
+                    System.out.println("EL JUGADOR " + (i+1) + " HA GANADO!");
                     break;
                 }
             }
-        } while (eleccion != numeroAleatorio);
+        } while (eleccion!=numeroAleatorio);
     }
 
     public int solucionNumero() {
