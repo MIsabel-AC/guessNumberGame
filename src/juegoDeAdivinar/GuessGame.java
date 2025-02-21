@@ -37,47 +37,37 @@ public class GuessGame {
     }
 
 
-
     public GuessGame(String p1, String p2, String p3) {
         this.p1 = p1;
         this.p2 = p2;
         this.p3 = p3;
     }
 
-    public void startGame(int numeroAleatorio){
-        Player p1 = new Player();
-        Player p2 = new Player();
-        Player p3 = new Player();
-        int eleccion;
+    public void startGame(int numeroAleatorio) {
+        Player[] players = new Player[3];
+        players[0] = new Player();
+        players[1] = new Player();
+        players[2] = new Player();
 
-        do{
-            System.out.println("Turno del p1 adivina el número: ");
-            eleccion = p1.guess();
-            if(eleccion==numeroAleatorio){
-                System.out.println("EL JUGADOR 1 HA GANADO!");
-                break;
-            }
+        int eleccion = -1;
 
-            System.out.println("Turno del p2 adivina el número: ");
-            eleccion = p2.guess();
-            if(eleccion==numeroAleatorio){
-                System.out.println("EL JUGADOR 2 HA GANADO!");
-                break;
-            }
+        do {
+            for (int i = 0; i < players.length; i++) {
+                System.out.println("Turno del jugador " + (i + 1) + ".");
+                eleccion = players[i].guess();
 
-            System.out.println("Turno del p3 adivina el número: ");
-            eleccion = p3.guess();
-            if(eleccion==numeroAleatorio){
-                System.out.println("EL JUGADOR 3 HA GANADO!");
-                break;
+                if (eleccion == numeroAleatorio) {
+                    System.out.println("EL JUGADOR " + (i + 1) + " HA GANADO!");
+                    break;
+                }
             }
-        }while(eleccion!=numeroAleatorio);
+        } while (eleccion != numeroAleatorio);
     }
 
-    public int solucionNumero(){
+    public int solucionNumero() {
         Random generadorAleatorios = new Random();
 
-        int numeroAleatorio = 0+generadorAleatorios.nextInt(9);
+        int numeroAleatorio = 0 + generadorAleatorios.nextInt(9);
         System.out.println("La solución real  es *****" + numeroAleatorio + "*****");
 
         return numeroAleatorio;
